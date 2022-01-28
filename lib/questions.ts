@@ -7,40 +7,40 @@ export type Question = {
 
 const quizQuestions: Question[] = [
   {
-    questionText: "What do the initials DB in Aston Martin DB11 stand for?",
+    questionText: "How many teeth normal adult dogs have?",
     image:
-      "https://images.unsplash.com/photo-1642201855395-1c8b44e6e42b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
-    answers: [
-      "Trick question: nothing!",
-      "David Brown",
-      "Drive Better",
-      "Diane Blue",
-    ],
-    correctAnswerIndex: 1,
-  },
-  {
-    questionText: "Which car brand is this logo for?",
-    image: "https://www.carlogos.org/logo/Lexus-symbol-640x480.jpg",
-    answers: ["Lamborghini", "Lada", "Lotus", "Lexus"],
-    correctAnswerIndex: 3,
-  },
-  {
-    questionText: "Where in the UK is the MINI plant?",
-    image:
-      "https://images.unsplash.com/photo-1591439346018-9d5df732ab7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
-    answers: ["Oxford", "Cambridge", "London", "Edinburgh"],
-    correctAnswerIndex: 0,
-  },
-  {
-    questionText:
-      "Which was the first James Bond film to include an Aston Martin?",
-    answers: ["Dr No", "From Russia with Love", "Goldfinger", "Thunderball"],
+      "https://images.unsplash.com/photo-1562400878-83323040c8df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80",
+    answers: ["24", "16", "42", "32"],
     correctAnswerIndex: 2,
   },
   {
-    questionText: "What color were all Ferraris originally?",
-    answers: ["Yellow", "White", "Blue", "Red"],
+    questionText: "Through what part of the body do dogs sweat?",
+    image:
+      "https://images.unsplash.com/photo-1517423738875-5ce310acd3da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=470&q=80",
+    answers: ["Armpits", "Ears", "Backside", "Paws"],
     correctAnswerIndex: 3,
+  },
+  {
+    questionText: "What is the most common training command taught to dogs?",
+    image:
+      "https://images.unsplash.com/photo-1535930749574-1399327ce78f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80",
+    answers: ["Stay", "Beg", "Sit", "Dance"],
+    correctAnswerIndex: 2,
+  },
+  {
+    questionText: "What is a dog’s most highly developed sense?",
+    image:
+      "https://images.unsplash.com/photo-1559190394-df5a28aab5c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
+    answers: ["Taste", "Smell", "Sight", "Touch"],
+    correctAnswerIndex: 1,
+  },
+  {
+    questionText:
+      "What is the favorite dog breed of the Queen of England, Elizabeth II?",
+    image:
+      "https://images.unsplash.com/photo-1601880348117-25c1127a95df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    answers: ["Corgi", "Basenji", "Rottweiler", "Pomeranian"],
+    correctAnswerIndex: 0,
   },
 ];
 

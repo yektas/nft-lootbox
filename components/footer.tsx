@@ -6,9 +6,21 @@ export default function Footer() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Learn web3 dev and earn crypto rewards at{" "}
+        Learn web3 dev and earn crypto rewards at
         <span className="underline">Pointer</span>
       </a>
+
+      <p className="text-primary text-md">
+        Redesigned by
+        <a
+          href="https://github.com/yektas"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-bold"
+        >
+          Sercan
+        </a>
+      </p>
     </footer>
   );
 }

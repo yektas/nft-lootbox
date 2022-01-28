@@ -7,6 +7,7 @@ import {
 } from "../pages/api/check-answer";
 import PrimaryButton from "./primary-button";
 import invariant from "tiny-invariant";
+import { useWeb3 } from "@3rdweb/hooks";
 
 type Props = {
   questionIndex: number;
@@ -25,6 +26,8 @@ export default function QuizQuestion({
   answers,
   nextQuestionFunction,
 }: Props) {
+  const { address, provider } = useWeb3();
+
   const [answerIndex, setAnswerIndex] = useState<number | undefined>(undefined);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
@@ -34,6 +37,10 @@ export default function QuizQuestion({
   const [correctAnswerWas, setCorrectAnswerWas] = useState<number | undefined>(
     undefined
   );
+
+  if (!address) {
+    return <p>Please connect your wallet to take the quiz!</p>;
+  }
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -45,12 +52,24 @@ export default function QuizQuestion({
         "Answer index is required to submit"
       );
 
+      invariant(
+        provider !== undefined,
+        "Provider must be defined to submit an answer"
+      );
+
+      const message =
+        "Please sign this message to confirm your identity and submit the answer.This won't cost any gas!";
+      const signedMessage = await provider.getSigner().signMessage(message);
+
       const payload: CheckAnswerPayload = {
         questionIndex,
         answerIndex,
+        message,
+        signedMessage,
       };
 
       const checkResponse = await axios.post("/api/check-answer", payload);
+
       const result = checkResponse.data as CheckAnswerResponse;
 
       if (result.kind === "error") {
@@ -79,7 +98,7 @@ export default function QuizQuestion({
     if (answerResult === "correct") {
       return (
         <>
-          <p className="text-green-800">
+          <p className="text-green-500">
             Congratulations! That was the right answer!
           </p>
           <p>
@@ -95,7 +114,7 @@ export default function QuizQuestion({
     }
 
     if (answerResult === "incorrect") {
-      return <p className="text-red-800">Sorry, that was incorrect!</p>;
+      return <p className="text-red-500">Sorry, that was incorrect!</p>;
     }
 
     return (
@@ -114,14 +133,18 @@ export default function QuizQuestion({
 
   return (
     <form>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-6 p-6 bg-white rounded-lg shadow-md">
         <div>
           <div className="flex flex-col gap-2">
-            <label className="font-medium text-lg text-gray-900">
+            <label className="text-lg font-medium text-gray-900">
               {questionText}
             </label>
             {image ? (
-              <img src={image} className="object-cover h-48 w-96" alt="" />
+              <img
+                src={image}
+                className="object-cover w-[250px] rounded-lg shadow-lg"
+                alt=""
+              />
             ) : null}
           </div>
           <fieldset className="mt-4">
@@ -132,7 +155,7 @@ export default function QuizQuestion({
                     id={i.toString()}
                     name="quiz-answer"
                     type="radio"
-                    className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 peer disabled:cursor-not-allowed"
+                    className="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500 peer disabled:cursor-not-allowed"
                     value={i}
                     checked={answerIndex === i}
                     onChange={(e) => setAnswerIndex(Number(e.target.value))}
@@ -140,7 +163,7 @@ export default function QuizQuestion({
                   />
                   <label
                     htmlFor={i.toString()}
-                    className="ml-3 block text-sm font-medium text-gray-700 peer-disabled:text-gray-500 peer-disabled:cursor-not-allowed"
+                    className="block ml-3 text-sm font-medium text-gray-700 peer-disabled:text-gray-500 peer-disabled:cursor-not-allowed"
                   >
                     {answerText}
                     {i === correctAnswerWas ? <span> ✅</span> : null}

@@ -6,16 +6,19 @@
     "start": "next start"
   },
   "dependencies": {
-    "@3rdweb/sdk": "^1.36.2",
+    "@3rdweb/sdk": "^1.36.11",
     "axios": "^0.25.0",
-    "dotenv": "^14.2.0",
+    "dotenv": "^14.3.2",
     "ethers": "^5.5.3",
     "next": "^12.0.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hot-toast": "^2.2.0",
     "tiny-invariant": "^1.2.0"
   },
   "devDependencies": {
+    "@3rdweb/hooks": "^1.8.0",
+    "@3rdweb/react": "^1.8.1",
     "@types/node": "17.0.4",
     "@types/react": "17.0.38",
     "autoprefixer": "^10.4.0",
